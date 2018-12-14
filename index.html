@@ -17,7 +17,19 @@
       <a href="#" class="brand">
         <span>HAR Cleaner</span>
       </a>
+
+      <span>
+        <input type="file" name="file" id="file" class="fileinput" @change="loadFile" />
+        <label for="file">Choose a HAR file</label>
+      </span>
+
     </nav>
+
+    <div class="content">
+      <div class="error" v-if="err">
+        <span>ERROR: </span> {{ err }}
+      </div>
+    </div>
   </div>
   
   <script src="vendor/vue.js"></script><!-- DEVELOP -->
