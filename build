@@ -1,0 +1,11 @@
+#!/bin/bash
+
+sed \
+    -e '/-- DEVELOP --/d' \
+    -e 's/<!--PROD //' \
+    -e 's/ PROD-->//' \
+    -e '/INCLUDE_STYLE_CSS/ {' -e 'r style.css' -e 'd' -e '}' \
+    -e '/INCLUDE_MAIN_JS/ {' -e 'r main.js' -e 'd' -e '}' \
+    index.html > dist/index.html
+
+echo 'Output created at dist/index.html'
