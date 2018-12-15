@@ -6,7 +6,11 @@ nav .centered {
   margin-top: 8px;
 }
 
-.pseudo.button {
+nav a img {
+  vertical-align: sub;
+}
+
+.pseudo.button.bg {
   background: #bbb;
 }
 
@@ -77,5 +81,9 @@ nav .centered {
 .entry.unselected {
   opacity: 0.3;
   background: #eee;
+}
+
+.entry.hidden {
+  display: none;
 }
 /* /Entry */

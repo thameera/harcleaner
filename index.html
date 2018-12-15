@@ -22,7 +22,8 @@
         <input type="file" name="file" id="file1" class="fileinput" @change="loadFile" />
         <label for="file1">Choose a HAR file</label>
       </span>
-      <a v-if="fileopened" href="#" class="pseudo button icon-picture centered" @click="saveFile">Save</a>
+      <a v-if="fileopened" href="#" class="pseudo button icon-picture centered bg" @click="saveFile">Save</a>
+      <a v-if="fileopened" href="#" class="pseudo button icon-picture" @click="hideUnselected = !hideUnselected" v-bind:data-tooltip="hideUnselectedTooltip"><img width="20" height="20" v-bind:src="hideUnselectedImg"></a>
 
       <div class="menu">
         <span v-if="fileopened">
@@ -46,6 +47,7 @@
       <div v-for="(entry, index) in entries">
         <entry 
           v-bind:data="entry"
+          v-bind:hideunselected="hideUnselected"
           v-on:toggle="entry.selected = !entry.selected"
           >
       </div>
