@@ -45,11 +45,13 @@
       </div>
 
       <div v-for="(entry, index) in entries">
-        <entry 
-          v-bind:data="entry"
-          v-bind:hideunselected="hideUnselected"
-          v-on:toggle="entry.selected = !entry.selected"
-          >
+        <transition name="slide-fade">
+          <entry
+            v-if="entry.selected || !hideUnselected"
+            v-bind:data="entry"
+            v-on:toggle="entry.selected = !entry.selected"
+            >
+        </transition>
       </div>
     </div>
 

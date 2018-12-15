@@ -1,5 +1,5 @@
 Vue.component('entry', {
-  props: ['data', 'hideunselected'],
+  props: ['data'],
   computed: {
     statusClass: function() {
       if (this.data.status < 300) return 'status-success'
@@ -8,7 +8,7 @@ Vue.component('entry', {
     },
   },
   template: `
-    <div class="entry" v-bind:class="{ unselected: !data.selected, hidden: !data.selected && hideunselected }">
+    <div class="entry" v-bind:class="{ unselected: !data.selected }">
       <div class="check togglable" v-on:click="$emit('toggle')">
         <label>
           <input type="checkbox" v-model="data.selected">

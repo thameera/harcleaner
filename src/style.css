@@ -40,7 +40,7 @@ nav a img {
 }
 
 .content {
-  padding: 60px 20px 0;
+  padding: 70px 20px 0;
 }
 
 .error {
@@ -83,7 +83,14 @@ nav a img {
   background: #eee;
 }
 
-.entry.hidden {
-  display: none;
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .3s ease;
+}
+.slide-fade-enter, .slide-fade-leave-to {
+  transform: translateX(150px);
+  opacity: 0;
 }
 /* /Entry */
