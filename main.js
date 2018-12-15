@@ -11,25 +11,14 @@ new Vue({
       this.entries = null
       this.err = null
 
-      const file = ev.target.files[0]
-      const reader = new FileReader()
-
-      reader.onload = e => {
-        let input = ''
-        try {
-          input = JSON.parse(e.target.result)
-        } catch(err) {
-          console.log(err)
-          this.err = 'Invalid JSON in input file'
-          return
-        }
-        if (!input || !input.log || !Array.isArray(input.log.entries)) {
-          this.err = 'File not in HAR format'
+      HAR.load(ev.target.files[0], (err, input) => {
+        if (err) {
+          this.err = err
           return
         }
 
         this.original = input
-        this.filename = file.name
+        this.filename = ev.target.files[0].name
 
         this.entries = input.log.entries.map(entry => {
           let urlpath
@@ -48,15 +37,7 @@ new Vue({
           }
         })
         console.log(this.entries)
-
-      }
-
-      try {
-        reader.readAsText(file)
-      } catch(err) {
-        console.log(err)
-        this.err = 'Error opening file'
-      }
+      })
     }, // /loadFile
   },
 })
