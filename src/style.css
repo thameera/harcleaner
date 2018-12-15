@@ -61,4 +61,13 @@ nav {
 .status-error {
   color: red;
 }
+
+.entry .togglable {
+  cursor: pointer;
+}
+
+.entry.unselected {
+  opacity: 0.3;
+  background: #eee;
+}
 /* /Entry */

@@ -8,15 +8,15 @@ Vue.component('entry', {
     },
   },
   template: `
-    <div class="entry">
-      <div class="check">
+    <div class="entry" v-bind:class="{ unselected: !data.selected }">
+      <div class="check togglable" v-on:click="$emit('toggle')">
         <label>
           <input type="checkbox" v-model="data.selected">
           <span class="checkable"></span>
         </label>
       </div>
-      <div class="httpstatus" v-bind:class="statusClass">{{ data.status }}</div>
-      <div class="method">{{ data.method }}</div>
+      <div class="httpstatus togglable" v-bind:class="statusClass" v-on:click="$emit('toggle')">{{ data.status }}</div>
+      <div class="method togglable" v-on:click="$emit('toggle')">{{ data.method }}</div>
       <div class="url">{{ data.url }}</div>
     </div>
   `,
