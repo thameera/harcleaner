@@ -37,3 +37,28 @@ nav {
 .error span {
   font-weight: 600;
 }
+
+/* Entry */
+.entry {
+  display: grid;
+  grid-template-columns: 50px 50px 100px 1fr;
+  border: 1px solid rgba(0,0,0,0.35);
+  box-shadow: 3px 3px 2px 0px rgba(0,0,0,0.35);
+  margin: 12px 0px;
+  padding: 3px 5px;
+}
+
+.entry .check {
+  text-align: center;
+}
+
+.status-success {
+  color: green;
+}
+.status-redirect {
+  color: blue;
+}
+.status-error {
+  color: red;
+}
+/* /Entry */

@@ -6,6 +6,7 @@ sed \
     -e 's/ PROD-->//' \
     -e '/INCLUDE_STYLE_CSS/ {' -e 'r src/style.css' -e 'd' -e '}' \
     -e '/INCLUDE_HAR_JS/ {' -e 'r src/har.js' -e 'd' -e '}' \
+    -e '/INCLUDE_ENTRY_JS/ {' -e 'r src/entry.js' -e 'd' -e '}' \
     -e '/INCLUDE_MAIN_JS/ {' -e 'r src/main.js' -e 'd' -e '}' \
     index.html > dist/index.html
 

@@ -29,17 +29,23 @@
       <div class="error" v-if="err">
         <span>ERROR: </span> {{ err }}
       </div>
+
+      <div v-for="(entry, index) in entries">
+        <entry v-bind:data="entry">
+      </div>
     </div>
+
   </div>
   
   <script src="vendor/vue.js"></script><!-- DEVELOP -->
   <!--PROD <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.min.js"></script> PROD-->
   <script src="src/har.js"></script><!-- DEVELOP -->
+  <script src="src/entry.js"></script><!-- DEVELOP -->
   <script src="src/main.js"></script><!-- DEVELOP -->
   <script>
     ;(function() {
       /* INCLUDE_HAR_JS */
-
+      /* INCLUDE_ENTRY_JS */
       /* INCLUDE_MAIN_JS */
     })();
   </script>
