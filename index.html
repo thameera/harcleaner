@@ -18,16 +18,29 @@
         <span>HAR Cleaner</span>
       </a>
 
-      <span>
-        <input type="file" name="file" id="file" class="fileinput" @change="loadFile" />
-        <label for="file">Choose a HAR file</label>
+      <span v-if="!fileopened">
+        <input type="file" name="file" id="file1" class="fileinput" @change="loadFile" />
+        <label for="file1">Choose a HAR file</label>
       </span>
+      <a v-if="fileopened" href="#" class="pseudo button icon-picture centered">Save</a>
+
+      <div class="menu">
+        <span v-if="fileopened">
+          <input type="file" name="file" id="file2" class="fileinput" @change="loadFile" />
+          <label for="file2">Choose a HAR file</label>
+        </span>
+        <a href="https://github.com/thameera/harcleaner">Github</a>
+      </div>
 
     </nav>
 
     <div class="content">
       <div class="error" v-if="err">
         <span>ERROR: </span> {{ err }}
+      </div>
+
+      <div v-if="fileopened">
+        <em>Uncheck all unnecessary requests and hit 'Save'.</em>
       </div>
 
       <div v-for="(entry, index) in entries">

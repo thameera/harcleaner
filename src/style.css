@@ -2,6 +2,14 @@ nav {
   background-color: #efefef;
 }
 
+nav .centered {
+  margin-top: 8px;
+}
+
+.pseudo.button {
+  background: #bbb;
+}
+
 .fileinput {
 	width: 0.1px;
 	height: 0.1px;

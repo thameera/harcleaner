@@ -6,6 +6,11 @@ new Vue({
     original: null,
     filename: '',
   },
+  computed: {
+    fileopened: function() {
+      return this.entries && this.entries.length
+    },
+  },
   methods: {
     loadFile: function(ev) {
       this.entries = null
