@@ -22,7 +22,7 @@
         <input type="file" name="file" id="file1" class="fileinput" @change="loadFile" />
         <label for="file1">Choose a HAR file</label>
       </span>
-      <a v-if="fileopened" href="#" class="pseudo button icon-picture centered">Save</a>
+      <a v-if="fileopened" href="#" class="pseudo button icon-picture centered" @click="saveFile">Save</a>
 
       <div class="menu">
         <span v-if="fileopened">

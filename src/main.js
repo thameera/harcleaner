@@ -44,5 +44,18 @@ new Vue({
         console.log(this.entries)
       })
     }, // /loadFile
+    saveFile: function() {
+      // create a copy of original
+      const out = JSON.parse(JSON.stringify(this.original))
+
+      // Set only selected entries
+      out.log.entries = this.entries.filter(entry => entry.selected).map(entry => entry.data)
+
+      const f = this.filename
+      let dotloc = f.lastIndexOf('.')
+      const filename = dotloc > -1 ? `${f.substr(0, dotloc)}_cleaned${f.substr(dotloc)}` : `${f}_cleaned.har`
+
+      HAR.save(filename, out)
+    }, // /saveFile
   },
 })
