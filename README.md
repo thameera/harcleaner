@@ -2,6 +2,8 @@
 
 Clean up HAR files by removing unnecessary requests.
 
+Live version available at: https://thameera.com/har_cleaner
+
 ## Building
 
 Opening `index.html` directly in the browser will work in development mode.
