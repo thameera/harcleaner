@@ -24,6 +24,7 @@
       </span>
       <a v-if="fileopened" href="#" class="pseudo button icon-picture centered bg" @click="saveFile">Save</a>
       <a v-if="fileopened" href="#" class="pseudo button icon-picture" @click="hideUnselected = !hideUnselected" v-bind:data-tooltip="hideUnselectedTooltip"><img width="20" height="20" v-bind:src="hideUnselectedImg"></a>
+      <input v-if="fileopened" type="text" class="search" placeholder="Search..." v-model="searchText" @change="onSearch" @keyup="onSearch">
 
       <div class="menu">
         <span v-if="fileopened">

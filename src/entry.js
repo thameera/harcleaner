@@ -8,7 +8,7 @@ Vue.component('entry', {
     },
   },
   template: `
-    <div class="entry" v-bind:class="{ unselected: !data.selected }">
+    <div class="entry" v-bind:class="{ unselected: !data.selected, highlighted: data.searchResult }">
       <div class="check togglable" v-on:click="$emit('toggle')">
         <label>
           <input type="checkbox" v-model="data.selected">

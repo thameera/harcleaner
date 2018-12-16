@@ -6,6 +6,7 @@ new Vue({
     original: null,
     filename: '',
     hideUnselected: false,
+    searchText: '',
   },
   computed: {
     fileopened: function() {
@@ -51,6 +52,7 @@ new Vue({
             url: urlpath,
             method: entry.request.method,
             status: entry.response.status,
+            searchResult: false,
             data: entry,
           }
         })
@@ -70,5 +72,15 @@ new Vue({
 
       HAR.save(filename, out)
     }, // /saveFile
+    onSearch: function() {
+      const regex = new RegExp(this.searchText, 'i')
+      this.entries.forEach(entry => {
+        if (this.searchText === '' || entry.url.search(regex) === -1) {
+          entry.searchResult = false
+        } else {
+          entry.searchResult = true
+        }
+      })
+    }, // /onSearch
   },
 })
