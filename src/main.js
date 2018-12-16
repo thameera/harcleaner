@@ -7,6 +7,8 @@ new Vue({
     filename: '',
     hideUnselected: false,
     searchText: '',
+    searchResCount: 0,
+    sweepIcon: ICONS.trash,
   },
   computed: {
     fileopened: function() {
@@ -23,6 +25,8 @@ new Vue({
     loadFile: function(ev) {
       this.entries = null
       this.err = null
+      this.searchText = ''
+      this.searchResCount = 0
 
       HAR.load(ev.target.files[0], (err, input) => {
         if (err) {
@@ -68,13 +72,21 @@ new Vue({
     }, // /saveFile
     onSearch: function() {
       const regex = new RegExp(this.searchText, 'i')
+      let count = 0
       this.entries.forEach(entry => {
         if (this.searchText === '' || entry.url.search(regex) === -1) {
           entry.searchResult = false
         } else {
           entry.searchResult = true
+          count++
         }
+        this.searchResCount = count
       })
     }, // /onSearch
+    uncheckSearchResults: function() {
+      this.entries.forEach(entry => {
+        if (entry.searchResult) entry.selected = false
+      })
+    }, // /uncheckSearchResults
   },
 })
