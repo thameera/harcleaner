@@ -30,6 +30,7 @@ const HAR = {
     const text = JSON.stringify(json, null, 2)
     const blob = new Blob([text], {type: 'text/plain'})
 
+    // We use FileSaver's saveAs method for better browser compatibility
     saveAs(blob, filename)
   }
 }

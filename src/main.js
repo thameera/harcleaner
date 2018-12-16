@@ -10,21 +10,19 @@ new Vue({
     sweepIcon: ICONS.trash,
   },
   computed: {
-    fileopened: function() {
+    fileopened: function() { // Whether a HAR file is opened right now
       return this.entries && this.entries.length
     },
-    hideUnselectedImg: function() {
+    hideUnselectedImg: function() { // Icon for 'Hide unchecked requests' button
       return this.hideUnselected ? ICONS.eye_off : ICONS.eye_on
     },
-    hideUnselectedTooltip: function() {
+    hideUnselectedTooltip: function() { // Tooltip for 'Hide unchecked requests' button
       return this.hideUnselected ? 'Show unchecked requests' : 'Hide unchecked requests'
     },
-    searchResCount: function() {
-      return this.entries.reduce((count, entry) => {
-        return count + (entry.searchResult ? 1 : 0)
-      }, 0)
+    searchResCount: function() { // Current search result count
+      return this.entries.filter(e => e.searchResult).length
     },
-    checkedCount: function() {
+    checkedCount: function() { // Checked item count
       return this.entries.filter(e => e.selected).length
     },
   },
@@ -40,53 +38,56 @@ new Vue({
           return
         }
 
-        this.original = input
+        this.original = input // we keep this to use when saving the file at thend
         this.filename = ev.target.files[0].name
 
         this.entries = input.log.entries.map(entry => {
           let urlpath
           try {
             const url = new URL(entry.request.url)
-            urlpath = `${url.origin}${url.pathname}`
+            urlpath = `${url.origin}${url.pathname}` // get rid of query params and hash fragment
           } catch(err) {
+            // this can happen when the url isn't actually a URL
             urlpath = entry.request.url
           }
           return {
-            selected: true,
+            selected: true, // all requests are selected at the beginning
             url: urlpath,
             method: entry.request.method,
             status: entry.response.status,
             searchResult: false,
-            data: entry,
+            data: entry, // actual data of the request from HAR
           }
         })
-        console.log(this.entries)
       })
     }, // /loadFile
+
     saveFile: function() {
       // create a copy of original
       const out = JSON.parse(JSON.stringify(this.original))
 
-      // Set only selected entries
+      // Output only selected entries
       out.log.entries = this.entries.filter(entry => entry.selected).map(entry => entry.data)
 
+      // Append `_cleaned` to new filename
       const f = this.filename
       let dotloc = f.lastIndexOf('.')
       const filename = dotloc > -1 ? `${f.substr(0, dotloc)}_cleaned${f.substr(dotloc)}` : `${f}_cleaned.har`
 
       HAR.save(filename, out)
     }, // /saveFile
+
     onSearch: function() {
-      const regex = new RegExp(this.searchText, 'i')
+      const searchText = this.searchText.trim()
+      const regex = new RegExp(searchText, 'i')
+
+      // Set `searchResult = true` in all entries where search is matched
       this.entries = this.entries.map(entry => {
-        if (this.searchText === '' || entry.url.search(regex) === -1) {
-          entry.searchResult = false
-        } else {
-          entry.searchResult = true
-        }
+        entry.searchResult = (searchText !== '') && (entry.url.search(regex) > -1)
         return entry
       })
     }, // /onSearch
+
     uncheckSearchResults: function() {
       this.entries = this.entries.map(entry => {
         if (entry.searchResult) entry.selected = false
