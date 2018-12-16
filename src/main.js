@@ -24,6 +24,9 @@ new Vue({
         return count + (entry.searchResult ? 1 : 0)
       }, 0)
     },
+    checkedCount: function() {
+      return this.entries.filter(e => e.selected).length
+    },
   },
   methods: {
     loadFile: function(ev) {

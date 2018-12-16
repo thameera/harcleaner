@@ -45,6 +45,9 @@
       <div v-if="fileopened">
         <em>Uncheck all unnecessary requests and hit 'Save'.</em>
       </div>
+      <div v-if="fileopened">
+        <em>{{ checkedCount }} of {{ entries.length }} checked.</em>
+      </div>
 
       <div v-for="(entry, index) in entries">
         <transition name="slide-fade">
