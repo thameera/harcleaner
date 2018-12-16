@@ -8,7 +8,7 @@
   <!--PROD <link rel="stylesheet" href="https://unpkg.com/picnic@6.5.0/picnic.min.css"> PROD-->
   <link rel="stylesheet" href="src/style.css"><!-- DEVELOP -->
   <style>
-    /* INCLUDE_STYLE_CSS */
+    /* INCLUDE_CSS */
   </style>
 </head>
 <body>
@@ -43,7 +43,7 @@
       </div>
 
       <div v-if="fileopened">
-        <em>Uncheck all unnecessary requests and hit 'Save'.</em>
+        <em>Uncheck the requests you want to remove and hit 'Save'.</em>
       </div>
       <div v-if="fileopened">
         <em>{{ checkedCount }} of {{ entries.length }} checked.</em>
@@ -70,12 +70,9 @@
   <script src="src/entry.js"></script><!-- DEVELOP -->
   <script src="src/main.js"></script><!-- DEVELOP -->
   <script>
+    // If you want to read the unminified source, check out https://github.com/thameera/harcleaner
     ;(function() {
-      /* INCLUDE_ICONS_JS */
-      /* INCLUDE_FILESAVER_JS */
-      /* INCLUDE_HAR_JS */
-      /* INCLUDE_ENTRY_JS */
-      /* INCLUDE_MAIN_JS */
+      /* INCLUDE_JS */
     })();
   </script>
 </body>

@@ -1,15 +1,14 @@
 #!/bin/bash
 
+css=$(uglifycss src/style.css)
+js=$(terser --compress -- src/icons.js src/filesaver.js src/har.js src/entry.js src/main.js)
+escaped_js=$(echo $js | sed -e 's/\\/\\\\/g; s/\//\\\//g; s/&/\\\&/g') # https://stackoverflow.com/a/407649/390522
+
 sed \
     -e '/-- DEVELOP --/d' \
     -e 's/<!--PROD //' \
     -e 's/ PROD-->//' \
-    -e '/INCLUDE_STYLE_CSS/ {' -e 'r src/style.css' -e 'd' -e '}' \
-    -e '/INCLUDE_ICONS_JS/ {' -e 'r src/icons.js' -e 'd' -e '}' \
-    -e '/INCLUDE_FILESAVER_JS/ {' -e 'r src/filesaver.js' -e 'd' -e '}' \
-    -e '/INCLUDE_HAR_JS/ {' -e 'r src/har.js' -e 'd' -e '}' \
-    -e '/INCLUDE_ENTRY_JS/ {' -e 'r src/entry.js' -e 'd' -e '}' \
-    -e '/INCLUDE_MAIN_JS/ {' -e 'r src/main.js' -e 'd' -e '}' \
-    index.html > dist/index.html
-
-echo 'Output created at dist/index.html'
+    -e "s/.*INCLUDE_CSS.*/$css/" \
+    -e "s/.*INCLUDE_JS.*/$escaped_js/" \
+    index.html > dist/index.html \
+    && echo "Output created at $(pwd)/dist/index.html"
