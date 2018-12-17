@@ -17,7 +17,7 @@ new Vue({
       return this.hideUnselected ? ICONS.eye_off : ICONS.eye_on
     },
     hideUnselectedTooltip: function() { // Tooltip for 'Hide unchecked requests' button
-      return this.hideUnselected ? 'Show unchecked requests' : 'Hide unchecked requests'
+      return this.hideUnselected ? 'Show all requests' : 'Hide unchecked requests'
     },
     searchResCount: function() { // Current search result count
       return this.entries.filter(e => e.searchResult).length
