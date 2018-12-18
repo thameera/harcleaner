@@ -6,7 +6,25 @@ nav .centered {
   margin-top: 8px;
 }
 
-nav a img {
+nav label.button {
+  background: #efefef;
+  color: #000;
+}
+
+nav label.button[disabled] {
+  background: #efefef;
+  opacity: 0.3;
+}
+
+nav label.button:hover {
+  background: #ccc;
+}
+
+nav label.button[disabled]:hover {
+  background: #efefef;
+}
+
+nav label.button, nav label.button img {
   vertical-align: sub;
 }
 

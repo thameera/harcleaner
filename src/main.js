@@ -89,6 +89,8 @@ new Vue({
     }, // /onSearch
 
     uncheckSearchResults: function() {
+      if (this.searchResCount === 0) return
+
       this.entries = this.entries.map(entry => {
         if (entry.searchResult) entry.selected = false
         return entry

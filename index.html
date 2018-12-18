@@ -23,9 +23,9 @@
         <label for="file1">Choose a HAR file</label>
       </span>
       <a v-if="fileopened" href="#" class="pseudo button icon-picture centered bg" @click="saveFile">Save</a>
-      <a v-if="fileopened" href="#" class="pseudo button icon-picture" @click="hideUnselected = !hideUnselected" v-bind:data-tooltip="hideUnselectedTooltip"><img width="20" height="20" v-bind:src="hideUnselectedImg"></a>
+      <label v-if="fileopened" class="button" v-bind:data-tooltip="hideUnselectedTooltip" @click="hideUnselected = !hideUnselected"><img width="20" height="20" v-bind:src="hideUnselectedImg"></label>
       <input v-if="fileopened" type="text" class="search" placeholder="Search..." v-model="searchText" @change="onSearch" @keyup="onSearch" @focus="$event.target.select()">
-      <a v-if="fileopened && searchResCount > 0" href="#" class="pseudo button icon-picture" @click="uncheckSearchResults" data-tooltip="Uncheck search results"><img width="20" height="20" v-bind:src="sweepIcon"></a>
+      <label v-if="fileopened" :disabled="searchResCount === 0" class="button" data-tooltip="Uncheck search results" @click="uncheckSearchResults"><img width="20" height="20" v-bind:src="sweepIcon"></label>
 
       <div class="menu">
         <span v-if="fileopened">
