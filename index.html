@@ -42,6 +42,26 @@
         <span>ERROR: </span> {{ err }}
       </div>
 
+      <div v-if="!fileopened">
+        <h3>What's a HAR file?</h3>
+        <p>A HAR file is a log of HTTP requests, typically exported from a web browser. More info at <a href="https://en.wikipedia.org/wiki/.har" target="_window">this Wikipedia article</a>.</p>
+        <h3>How do I capture a HAR file?</h3>
+        <p>This varies from browser to browser. There are guides for some of them <a href="https://auth0.com/docs/har" target="_window">here</a>.</p>
+        <h3>How do I view/analyze a captured HAR file?</h3>
+        <p>I recommend Google's <a href="https://toolbox.googleapps.com/apps/har_analyzer/" target="_window">HAR Analyzer</a> for this.</p>
+        <h3>Why should I clean a HAR file?</h3>
+        <p>A HAR file captured via the browser usually includes a lot of noise, like requests to fetch assets (images, CSS), analytics requests and requests from social widgets (to name a few).</p>
+        <p>It's usually a good idea to clean these up before sending the HAR file to a reviewer, so they can focus only on the important requests.</p>
+        <p>Even if you are the reviewer yourself, you can clean the HAR file first to remove the clutter.</p>
+        <h3>How do I use HAR Cleaner?</h3>
+        <ol>
+          <li>Open a HAR file from the 'Choose a HAR file' button.</li>
+          <li>Uncheck any requests that you want removed.</li>
+          <li>Use the search option to quickly wipe out large chunks of similar requests.</li>
+          <li>Click 'Save' button to download the cleaned HAR file. The new file will have a <em>_cleaned</em> suffix in the filename.</li>
+        </ol>
+      </div>
+
       <div v-if="fileopened">
         <em>Uncheck the requests you want to remove and hit 'Save'.</em>
       </div>
