@@ -29,17 +29,18 @@ nav label.button, nav label.button img {
 }
 
 .pseudo.button.bg {
-  background: #bbb;
+  background: #ccc;
 }
 
 .fileinput {
-	width: 0.1px;
-	height: 0.1px;
-	opacity: 0;
-	overflow: hidden;
-	position: absolute;
-	z-index: -1;
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
 }
+
 .fileinput + label {
   border-radius: 0.2em;
   margin: 0.5em 0;
@@ -48,7 +49,7 @@ nav label.button, nav label.button img {
   padding: .3em .8em;
   box-shadow: 0 0 transparent inset;
   color: #000;
-  background-color: #ddd;
+  background-color: #ccc;
   display: inline-block;
 }
 
