@@ -28,6 +28,11 @@ nav label.button, nav label.button img {
   vertical-align: sub;
 }
 
+nav label.filter {
+  padding: 3px 6px;
+  font-size: 90%;
+}
+
 .pseudo.button.bg {
   background: #ccc;
 }

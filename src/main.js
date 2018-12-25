@@ -76,13 +76,16 @@ new Vue({
 
       HAR.save(filename, out)
     }, // /saveFile
+
     onSearchBy: function(searchBy) {
       this.searchText = searchBy
       this.onSearch()
     }, // /onSearchBy
+
     onSearch: function() {
       const searchText = this.searchText.trim()
       const regex = new RegExp(searchText, 'i')
+
       // Set `searchResult = true` in all entries where search is matched
       this.entries = this.entries.map(entry => {
         entry.searchResult = (searchText !== '') && (entry.url.search(regex) > -1)

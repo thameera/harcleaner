@@ -26,10 +26,10 @@
       <label v-if="fileopened" class="button" v-bind:data-tooltip="hideUnselectedTooltip" @click="hideUnselected = !hideUnselected"><img width="20" height="20" v-bind:src="hideUnselectedImg"></label>
       <input v-if="fileopened" type="text" class="search" placeholder="Search..." v-model="searchText" @change="onSearch" @keyup="onSearch" @focus="$event.target.select()">
 
-      <label v-if="fileopened"  class="button" data-tooltip="Filter all JS files" @click="onSearchBy('js$')">JS</label>
-      <label v-if="fileopened"  class="button" data-tooltip="Filter all CSS files" @click="onSearchBy('css$')">CSS</label>
-      <label v-if="fileopened"  class="button" data-tooltip="Filter all Image files" @click="onSearchBy('png$|jpg$|jpeg$|gif$|svg$')">Image</label>
-      <label v-if="fileopened"  class="button" data-tooltip="Filter all Font files" @click="onSearchBy('woff$|woff2$|eot$')">Font</label>
+      <label v-if="fileopened" class="button filter" data-tooltip="Filter all JS files" @click="onSearchBy('js$')">JS</label>
+      <label v-if="fileopened" class="button filter" data-tooltip="Filter all CSS files" @click="onSearchBy('css$')">CSS</label>
+      <label v-if="fileopened" class="button filter" data-tooltip="Filter all Image files" @click="onSearchBy('png$|jpg$|jpeg$|gif$|svg$')">Img</label>
+      <label v-if="fileopened" class="button filter" data-tooltip="Filter all Font files" @click="onSearchBy('woff$|woff2$|eot$')">Font</label>
 
       <label v-if="fileopened" :disabled="searchResCount === 0" class="button" data-tooltip="Uncheck search results" @click="uncheckSearchResults"><img width="20" height="20" v-bind:src="sweepIcon"></label>
 
@@ -42,6 +42,7 @@
       </div>
 
     </nav>
+
     <div class="content">
       <div class="error" v-if="err">
         <span>ERROR: </span> {{ err }}
