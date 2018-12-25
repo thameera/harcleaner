@@ -24,7 +24,7 @@
       </span>
       <a v-if="fileopened" href="#" class="pseudo button icon-picture centered bg" @click="saveFile">Save</a>
       <label v-if="fileopened" class="button" v-bind:data-tooltip="hideUnselectedTooltip" @click="hideUnselected = !hideUnselected"><img width="20" height="20" v-bind:src="hideUnselectedImg"></label>
-      <input v-if="fileopened" type="text" class="search" placeholder="Search..." v-model="searchText" @change="onSearch" @keyup="onSearch" @focus="$event.target.select()">
+      <input v-if="fileopened" type="search" class="search" placeholder="Search..." v-model="searchText" @change="onSearch" @keyup="onSearch" @search="onSearch" @focus="$event.target.select()">
 
       <label v-if="fileopened" class="button filter" data-tooltip="Filter all JS files" @click="onSearchBy('js$')">JS</label>
       <label v-if="fileopened" class="button filter" data-tooltip="Filter all CSS files" @click="onSearchBy('css$')">CSS</label>

@@ -33,6 +33,11 @@ nav label.filter {
   font-size: 90%;
 }
 
+/* To show Cancel button on search input */
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: searchfield-cancel-button;
+}
+
 .pseudo.button.bg {
   background: #ccc;
 }
