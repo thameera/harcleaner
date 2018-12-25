@@ -28,7 +28,7 @@
 
       <label v-if="fileopened" class="button filter" data-tooltip="Filter all JS files" @click="onSearchBy('js$')">JS</label>
       <label v-if="fileopened" class="button filter" data-tooltip="Filter all CSS files" @click="onSearchBy('css$')">CSS</label>
-      <label v-if="fileopened" class="button filter" data-tooltip="Filter all Image files" @click="onSearchBy('png$|jpg$|jpeg$|gif$|svg$')">Img</label>
+      <label v-if="fileopened" class="button filter" data-tooltip="Filter all Image files" @click="onSearchBy('png$|jpg$|jpeg$|gif$|svg$|ico$')">Img</label>
       <label v-if="fileopened" class="button filter" data-tooltip="Filter all Font files" @click="onSearchBy('woff$|woff2$|eot$')">Font</label>
 
       <label v-if="fileopened" :disabled="searchResCount === 0" class="button" data-tooltip="Uncheck search results" @click="uncheckSearchResults"><img width="20" height="20" v-bind:src="sweepIcon"></label>
