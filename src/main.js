@@ -48,7 +48,7 @@ new Vue({
             urlpath = `${url.origin}${url.pathname}` // get rid of query params and hash fragment
           } catch(err) {
             // this can happen when the url isn't actually a URL
-            urlpath = entry.request.url
+            urlpath = entry.request.url || ''
           }
           return {
             selected: true, // all requests are selected at the beginning
