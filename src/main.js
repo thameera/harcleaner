@@ -42,10 +42,13 @@ new Vue({
         this.filename = ev.target.files[0].name
 
         this.entries = input.log.entries.map(entry => {
-          let urlpath
+          let urlpath, protocol, domain, path
           try {
             const url = new URL(entry.request.url)
             urlpath = `${url.origin}${url.pathname}` // get rid of query params and hash fragment
+            protocol = `${url.protocol}//`
+            domain = url.origin.substr(protocol.length)
+            path = url.pathname
           } catch(err) {
             // this can happen when the url isn't actually a URL
             urlpath = entry.request.url || ''
@@ -53,6 +56,9 @@ new Vue({
           return {
             selected: true, // all requests are selected at the beginning
             url: urlpath,
+            url_protocol: protocol || null,
+            url_domain: domain || null,
+            url_path: path || null,
             method: entry.request.method,
             status: entry.response.status,
             searchResult: false,

@@ -131,4 +131,12 @@ input.search {
 .entry.highlighted {
   background-color: yellow;
 }
+
+.entry .url .protocol {
+  opacity: 0.7;
+}
+
+.entry .url .path {
+  opacity: 0.7;
+}
 /* /Entry */

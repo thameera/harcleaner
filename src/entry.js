@@ -17,7 +17,10 @@ Vue.component('entry', {
       </div>
       <div class="httpstatus togglable" v-bind:class="statusClass" v-on:click="$emit('toggle')">{{ data.status }}</div>
       <div class="method togglable" v-on:click="$emit('toggle')">{{ data.method }}</div>
-      <div class="url">{{ data.url }}</div>
+      <div class="url" v-if="data.url_protocol">
+        <span class="protocol">{{ data.url_protocol }}</span><span class="domain">{{ data.url_domain }}</span><span class="path">{{ data.url_path }}</span>
+      </div>
+      <div class="url" v-else>{{ data.url }}</div>
     </div>
   `,
 })
