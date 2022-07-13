@@ -107,5 +107,33 @@ new Vue({
         return entry
       })
     }, // /uncheckSearchResults
+
+    selectUnselectAll: function () {
+      // create a copy of original
+      const out = JSON.parse(JSON.stringify(this.original))
+      const innerHTML = document.getElementById("selectAll-btn").innerHTML;
+      let entries;
+
+      // checking initial stage and toggling the behaviour
+
+      if (innerHTML === "Unselect All") {
+
+        entries = this.entries.map(entry => {
+          entry.selected = false;
+          return entry;
+        });
+        document.getElementById("selectAll-btn").innerHTML = "Select All";
+      }
+      else {
+        entries = this.entries.map(entry => {
+          entry.selected = true;
+          return entry;
+        });
+        document.getElementById("selectAll-btn").innerHTML = "Unselect All";
+      }
+
+      this.entries = entries;
+
+    }, // select and unselect all
   },
 })
